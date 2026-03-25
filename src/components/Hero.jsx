@@ -60,13 +60,14 @@ export default function Hero() {
               </h1>
             </motion.div>
 
-            {/* 🔥 NEW ADDED LINE */}
+            {/* Tagline */}
             <motion.div variants={itemVariants}>
               <p className="text-brown font-body text-lg font-medium mb-2">
-  Frontend Developer | Building modern, interactive web experiences
-</p>
+                Frontend Developer | Building modern, interactive web experiences
+              </p>
             </motion.div>
 
+            {/* Description */}
             <motion.div variants={itemVariants}>
               <p className="text-brown/50 font-body text-base leading-relaxed max-w-md">
                 B.Tech CSE (Data Science) student with CGPA{' '}
@@ -77,6 +78,7 @@ export default function Hero() {
               </p>
             </motion.div>
 
+            {/* Skills */}
             <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
               {['MERN Stack', 'Python', 'Docker', 'DSA', 'NLP', 'C++'].map((tech) => (
                 <span
@@ -88,22 +90,35 @@ export default function Hero() {
               ))}
             </motion.div>
 
+            {/* 🔥 FIXED BUTTONS */}
             <motion.div variants={itemVariants} className="flex items-center gap-4 pt-2">
+              
               <a
                 href="#projects"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+                }}
                 className="group px-6 py-3 bg-brown text-beige rounded-full font-body text-sm font-medium hover:bg-accent transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 hover:-translate-y-0.5 flex items-center gap-2"
               >
                 View Projects
                 <span className="group-hover:translate-x-1 transition-transform duration-200">→</span>
               </a>
+
               <a
                 href="#contact"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
+                }}
                 className="px-6 py-3 rounded-full border border-brown/30 text-brown font-body text-sm font-medium hover:border-brown hover:bg-brown/5 transition-all duration-300"
               >
                 Contact Me
               </a>
+
             </motion.div>
 
+            {/* Social Links */}
             <motion.div variants={itemVariants} className="flex items-center gap-5 pt-2">
               <a href="https://github.com/ankitaa2603" target="_blank" className="flex items-center gap-1.5 text-brown/60 hover:text-brown text-xs font-mono transition-colors duration-200">
                 <Github size={14} /> GitHub
@@ -115,9 +130,10 @@ export default function Hero() {
                 <Code2 size={14} /> LeetCode
               </a>
             </motion.div>
+
           </motion.div>
 
-          {/* RIGHT SIDE SAME (UNCHANGED) */}
+          {/* RIGHT SIDE SAME */}
         </div>
       </div>
     </section>
