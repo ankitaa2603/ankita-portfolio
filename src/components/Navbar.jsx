@@ -19,24 +19,33 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // 🔥 Smooth scroll function (SAFE)
+  const handleScrollTo = (id) => {
+    const el = document.getElementById(id)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? 'glass shadow-sm py-3'
-          : 'bg-transparent py-5'
+        scrolled ? 'glass shadow-sm py-3' : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
+        
         {/* Logo */}
         <a href="#" className="group flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-brown flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
             <span className="text-beige font-display font-bold text-sm">A</span>
           </div>
-          <span className="font-display font-semibold text-brown text-sm tracking-wide">Ankita Gupta</span>
+          <span className="font-display font-semibold text-brown text-sm tracking-wide">
+            Ankita Gupta
+          </span>
         </a>
 
         {/* Desktop Nav */}
@@ -45,16 +54,26 @@ export default function Navbar() {
             <a
               key={item.href}
               href={item.href}
+              onClick={(e) => {
+                e.preventDefault()
+                handleScrollTo(item.href.replace('#', ''))
+              }}
               className="nav-link text-brown/70 hover:text-brown transition-colors duration-200"
             >
               {item.label}
             </a>
           ))}
+
+          {/* 🔥 FIXED Hire Me */}
           <a
-            href="mailto:ankitagupta2603@gmail.com"
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              handleScrollTo('contact')
+            }}
             className="px-4 py-2 rounded-full border border-brown/30 text-brown font-body text-sm hover:bg-brown hover:text-beige transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
           >
-            Hire Me ↗
+            Hire Me ✦
           </a>
         </div>
 
@@ -93,12 +112,30 @@ export default function Navbar() {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    handleScrollTo(item.href.replace('#', ''))
+                    setMenuOpen(false)
+                  }}
                   className="nav-link text-brown/80 hover:text-brown py-1"
                 >
                   {item.label}
                 </a>
               ))}
+
+              {/* 🔥 Mobile Hire Me */}
+              <a
+                href="#contact"
+                onClick={(e) => {
+                  e.preventDefault()
+                  handleScrollTo('contact')
+                  setMenuOpen(false)
+                }}
+                className="mt-2 px-4 py-2 rounded-full border border-brown/30 text-brown text-sm text-center"
+              >
+                Hire Me ✦
+              </a>
+
             </div>
           </motion.div>
         )}
