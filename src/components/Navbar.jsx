@@ -19,7 +19,6 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  // 🔥 Smooth scroll function (SAFE)
   const handleScrollTo = (id) => {
     const el = document.getElementById(id)
     if (el) {
@@ -37,44 +36,39 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        
+
         {/* Logo */}
-        <a href="#" className="group flex items-center gap-2">
+        <button
+          onClick={() => handleScrollTo('about')}
+          className="group flex items-center gap-2"
+        >
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-accent to-brown flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
             <span className="text-beige font-display font-bold text-sm">A</span>
           </div>
           <span className="font-display font-semibold text-brown text-sm tracking-wide">
             Ankita Gupta
           </span>
-        </a>
+        </button>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navItems.map((item) => (
-            <a
+            <button
               key={item.href}
-              href={item.href}
-              onClick={(e) => {
-                e.preventDefault()
-                handleScrollTo(item.href.replace('#', ''))
-              }}
+              onClick={() => handleScrollTo(item.href.replace('#', ''))}
               className="nav-link text-brown/70 hover:text-brown transition-colors duration-200"
             >
               {item.label}
-            </a>
+            </button>
           ))}
 
-          {/* 🔥 FIXED Hire Me */}
-          <a
-            href="#contact"
-            onClick={(e) => {
-              e.preventDefault()
-              handleScrollTo('contact')
-            }}
+          {/* Hire Me */}
+          <button
+            onClick={() => handleScrollTo('contact')}
             className="px-4 py-2 rounded-full border border-brown/30 text-brown font-body text-sm hover:bg-brown hover:text-beige transition-all duration-300 hover:shadow-md hover:-translate-y-0.5"
           >
             Hire Me ✦
-          </a>
+          </button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -109,32 +103,28 @@ export default function Navbar() {
           >
             <div className="flex flex-col px-6 py-4 gap-4">
               {navItems.map((item) => (
-                <a
+                <button
                   key={item.href}
-                  href={item.href}
-                  onClick={(e) => {
-                    e.preventDefault()
+                  onClick={() => {
                     handleScrollTo(item.href.replace('#', ''))
                     setMenuOpen(false)
                   }}
-                  className="nav-link text-brown/80 hover:text-brown py-1"
+                  className="nav-link text-brown/80 hover:text-brown py-1 text-left"
                 >
                   {item.label}
-                </a>
+                </button>
               ))}
 
-              {/* 🔥 Mobile Hire Me */}
-              <a
-                href="#contact"
-                onClick={(e) => {
-                  e.preventDefault()
+              {/* Mobile Hire Me */}
+              <button
+                onClick={() => {
                   handleScrollTo('contact')
                   setMenuOpen(false)
                 }}
                 className="mt-2 px-4 py-2 rounded-full border border-brown/30 text-brown text-sm text-center"
               >
                 Hire Me ✦
-              </a>
+              </button>
 
             </div>
           </motion.div>
