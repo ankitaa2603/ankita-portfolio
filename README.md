@@ -63,13 +63,7 @@ Healthcare appointment platform
 * JWT authentication & admin dashboard
 * Real-time booking system
 
----
 
-## 📸 Screenshots
-
-*(Add your screenshots here later)*
-
----
 
 ## 🚀 Getting Started (Local Setup)
 
