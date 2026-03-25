@@ -62,13 +62,13 @@ export default function Hero() {
 
             {/* 🔥 NEW ADDED LINE */}
             <motion.div variants={itemVariants}>
-              <p className="text-brown/60 font-body text-lg">
-                Frontend Developer | Building modern, interactive web experiences
-              </p>
+              <p className="text-brown font-body text-lg font-medium mb-2">
+  Frontend Developer | Building modern, interactive web experiences
+</p>
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <p className="text-brown/70 font-body text-lg leading-relaxed max-w-md">
+              <p className="text-brown/50 font-body text-base leading-relaxed max-w-md">
                 B.Tech CSE (Data Science) student with CGPA{' '}
                 <span className="font-semibold text-brown font-mono">9.65</span> — building
                 full-stack products at the intersection of{' '}
