@@ -10,6 +10,7 @@ const projects = [
     subtitle: 'AI Image Generation Platform',
     description:
       'A full-stack MERN platform that converts text prompts into stunning AI-generated images using OpenAI and ClipDrop APIs — complete with auth and Razorpay payments.',
+    impact: 'AI-powered generation • Real-time rendering • Secure payments',
     tags: ['React.js', 'Node.js', 'MongoDB', 'OpenAI API', 'Razorpay', 'Tailwind'],
     icon: <Brain size={22} />,
     color: 'from-tea to-softgreen',
@@ -24,6 +25,7 @@ const projects = [
     subtitle: 'PDF Intelligence System',
     description:
       'Dockerized PDF intelligence engine for structured data extraction and persona-based summaries using NLP + OCR techniques. Built for Adobe India Hackathon 2025.',
+    impact: 'NLP-based parsing • OCR extraction • Persona-driven insights',
     tags: ['Python', 'Docker', 'spaCy', 'OCR', 'scikit-learn', 'pandas'],
     icon: <Layers size={22} />,
     color: 'from-softgreen to-tea',
@@ -38,6 +40,7 @@ const projects = [
     subtitle: 'Healthcare Appointment Platform',
     description:
       'End-to-end MERN healthcare app for doctor appointments, patient management, and admin dashboards with JWT auth and Razorpay payment integration.',
+    impact: 'Full-stack system • Secure auth • Real-time booking flow',
     tags: ['React.js', 'Express.js', 'MongoDB', 'JWT', 'REST APIs', 'Tailwind'],
     icon: <Heart size={22} />,
     color: 'from-accent/30 to-tea',
@@ -62,14 +65,11 @@ function ProjectCard({ project, index }) {
         project.featured ? 'md:col-span-2' : ''
       }`}
     >
-      {/* Background gradient */}
       <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
       
-      {/* Glass overlay */}
       <div className="relative glass p-8 h-full">
         <div className={`flex flex-col ${project.featured ? 'md:flex-row md:gap-10' : ''} h-full gap-6`}>
           
-          {/* Left / Header */}
           <div className={`${project.featured ? 'md:w-1/2' : ''} space-y-4`}>
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-3">
@@ -113,9 +113,13 @@ function ProjectCard({ project, index }) {
             <p className="text-brown/70 font-body text-sm leading-relaxed">
               {project.description}
             </p>
+
+            {/* 🔥 NEW IMPACT LINE */}
+            <p className="text-xs text-brown/50 mt-2 font-mono">
+              🚀 {project.impact}
+            </p>
           </div>
 
-          {/* Right */}
           <div className={`${project.featured ? 'md:w-1/2 flex flex-col justify-between' : ''} space-y-4`}>
             {project.featured && (
               <div className="relative rounded-2xl overflow-hidden bg-brown/5 border border-brown/10 h-40 flex items-center justify-center">
