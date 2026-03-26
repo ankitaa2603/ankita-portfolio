@@ -15,8 +15,8 @@ const projects = [
     icon: <Brain size={22} />,
     color: 'from-tea to-softgreen',
     accent: '#D4E09B',
-    live: '#',
-    source: '#',
+    live: 'https://imagify-rust-xi.vercel.app/',
+    source: 'https://github.com/ankitaa2603/Imagify',
     featured: true,
   },
   {
@@ -31,7 +31,7 @@ const projects = [
     color: 'from-softgreen to-tea',
     accent: '#CBDFBD',
     live: null,
-    source: '#',
+    source: 'https://github.com/ankitaa2603/adobe-connecting-dots-challenge',
     featured: false,
   },
   {
@@ -45,8 +45,8 @@ const projects = [
     icon: <Heart size={22} />,
     color: 'from-accent/30 to-tea',
     accent: '#F19C79',
-    live: '#',
-    source: '#',
+    live: 'https://prescripto-peach.vercel.app/',
+    source: 'https://github.com/ankitaa2603/prescripto',
     featured: false,
   },
 ]
@@ -60,23 +60,39 @@ function ProjectCard({ project, index }) {
       ref={ref}
       initial={{ opacity: 0, y: 50 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.15, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.7,
+        delay: index * 0.15,
+        ease: [0.22, 1, 0.36, 1],
+      }}
       className={`project-card group relative rounded-3xl overflow-hidden border border-softgreen/40 hover:border-brown/20 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(0,0,0,0.12),0_0_25px_rgba(212,224,155,0.35)] ${
         project.featured ? 'md:col-span-2' : ''
       }`}
     >
-      <div className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
-      
+      <div
+        className={`absolute inset-0 bg-gradient-to-br ${project.color} opacity-30 group-hover:opacity-50 transition-opacity duration-500`}
+      />
+
       <div className="relative glass p-8 h-full">
-        <div className={`flex flex-col ${project.featured ? 'md:flex-row md:gap-10' : ''} h-full gap-6`}>
-          
-          <div className={`${project.featured ? 'md:w-1/2' : ''} space-y-4`}>
+        <div
+          className={`flex flex-col ${
+            project.featured ? 'md:flex-row md:gap-10' : ''
+          } h-full gap-6`}
+        >
+          {/* LEFT */}
+          <div
+            className={`${
+              project.featured ? 'md:w-1/2' : ''
+            } space-y-4`}
+          >
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-2xl bg-brown/10 flex items-center justify-center text-brown">
                   {project.icon}
                 </div>
-                <span className="font-mono text-xs text-brown/40">{project.id}</span>
+                <span className="font-mono text-xs text-brown/40">
+                  {project.id}
+                </span>
               </div>
 
               <div className="flex gap-2">
@@ -90,6 +106,7 @@ function ProjectCard({ project, index }) {
                     <Github size={14} />
                   </a>
                 )}
+
                 {project.live && (
                   <a
                     href={project.live}
@@ -107,20 +124,28 @@ function ProjectCard({ project, index }) {
               <h3 className="font-display text-2xl font-bold text-brown mb-1">
                 {project.title}
               </h3>
-              <p className="text-xs font-mono text-brown/50 tracking-wider">{project.subtitle}</p>
+              <p className="text-xs font-mono text-brown/50 tracking-wider">
+                {project.subtitle}
+              </p>
             </div>
 
             <p className="text-brown/70 font-body text-sm leading-relaxed">
               {project.description}
             </p>
 
-            {/* 🔥 NEW IMPACT LINE */}
             <p className="text-xs text-brown/50 mt-2 font-mono">
               🚀 {project.impact}
             </p>
           </div>
 
-          <div className={`${project.featured ? 'md:w-1/2 flex flex-col justify-between' : ''} space-y-4`}>
+          {/* RIGHT */}
+          <div
+            className={`${
+              project.featured
+                ? 'md:w-1/2 flex flex-col justify-between'
+                : ''
+            } space-y-4`}
+          >
             {project.featured && (
               <div className="relative rounded-2xl overflow-hidden bg-brown/5 border border-brown/10 h-40 flex items-center justify-center">
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -128,7 +153,9 @@ function ProjectCard({ project, index }) {
                 </div>
                 <div className="relative text-center">
                   <div className="text-4xl mb-2">🎨</div>
-                  <p className="text-xs font-mono text-brown/50">Text → Image</p>
+                  <p className="text-xs font-mono text-brown/50">
+                    Text → Image
+                  </p>
                 </div>
               </div>
             )}
@@ -168,10 +195,12 @@ export default function Projects() {
           className="mb-14"
         >
           <p className="section-label line-accent mb-3">Featured Work</p>
+
           <div className="flex items-end gap-6 flex-wrap">
             <h2 className="font-display text-4xl md:text-5xl font-bold text-brown">
               Projects
             </h2>
+
             <p className="text-brown/50 font-body text-sm mb-1 max-w-xs">
               Things I've built from scratch — shipped, polished, and proud of.
             </p>
