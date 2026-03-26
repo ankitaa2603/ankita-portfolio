@@ -161,10 +161,10 @@ export default function Achievements() {
             className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4"
           >
             {[
-              { icon: <Trophy size={18} />, label: '2x Winner', sub: 'Competitions' },
+              { icon: <Trophy size={18} />, label: '5x Winner', sub: 'Competitions' },
               { icon: <Star size={18} />, label: '2x Semi-finalist', sub: 'National Hackathons' },
               { icon: <Award size={18} />, label: 'Top 5', sub: 'GeeksforGeeks' },
-              { icon: <Zap size={18} />, label: '5+ Events', sub: 'Organized & Competed' },
+              { icon: <Zap size={18} />, label: '8+ Events', sub: 'Organized & Competed' },
             ].map((s, i) => (
               <div
                 key={i}
