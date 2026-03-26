@@ -19,11 +19,22 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // 🔥 FINAL SCROLL FUNCTION
   const handleScrollTo = (id) => {
-    const el = document.getElementById(id)
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' })
-    }
+    setMenuOpen(false)
+
+    setTimeout(() => {
+      const el = document.getElementById(id)
+      if (el) {
+        const offset = 80 // navbar height fix
+        const y = el.getBoundingClientRect().top + window.pageYOffset - offset
+
+        window.scrollTo({
+          top: y,
+          behavior: 'smooth',
+        })
+      }
+    }, 250) // mobile animation delay
   }
 
   return (
@@ -31,7 +42,8 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      style={{ zIndex: 9999 }}
+      className={`fixed top-0 left-0 right-0 transition-all duration-500 ${
         scrolled ? 'glass shadow-sm py-3' : 'bg-transparent py-5'
       }`}
     >
@@ -99,17 +111,14 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden glass border-t border-softgreen/30"
+            className="md:hidden overflow-hidden border-t border-softgreen/30 bg-[#F6F4D2]"
           >
-            <div className="flex flex-col px-6 py-4 gap-4">
+            <div className="flex flex-col px-6 py-4 gap-1">
               {navItems.map((item) => (
                 <button
                   key={item.href}
-                  onClick={() => {
-                    handleScrollTo(item.href.replace('#', ''))
-                    setMenuOpen(false)
-                  }}
-                  className="nav-link text-brown/80 hover:text-brown py-1 text-left"
+                  onClick={() => handleScrollTo(item.href.replace('#', ''))}
+                  className="text-left py-3 px-2 text-brown/80 hover:text-brown font-mono text-sm tracking-wide border-b border-softgreen/30 last:border-0 active:bg-softgreen/20 rounded-lg transition-colors duration-200"
                 >
                   {item.label}
                 </button>
@@ -117,15 +126,11 @@ export default function Navbar() {
 
               {/* Mobile Hire Me */}
               <button
-                onClick={() => {
-                  handleScrollTo('contact')
-                  setMenuOpen(false)
-                }}
-                className="mt-2 px-4 py-2 rounded-full border border-brown/30 text-brown text-sm text-center"
+                onClick={() => handleScrollTo('contact')}
+                className="mt-3 w-full py-3 rounded-full border border-brown/30 text-brown text-sm text-center font-body hover:bg-brown hover:text-beige transition-all duration-300 active:scale-95"
               >
                 Hire Me ✦
               </button>
-
             </div>
           </motion.div>
         )}
